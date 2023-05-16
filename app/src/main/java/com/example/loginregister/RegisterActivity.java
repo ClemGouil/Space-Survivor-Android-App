@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -21,6 +22,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     Button  button_register, button_retour;
 
+    ProgressBar spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
         editTextPasswordC = findViewById(R.id.passwordC);
         editTextUsername  = findViewById(R.id.username);
         button_retour = findViewById(R.id.btn_ret);
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
 
         button_retour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,12 +48,15 @@ public class RegisterActivity extends AppCompatActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                spinner.setVisibility(View.VISIBLE);
                 if(TextUtils.isEmpty(editTextEmail.getText().toString()) || TextUtils.isEmpty(editTextPassword.getText().toString()) || TextUtils.isEmpty(editTextPasswordC.getText().toString()) || TextUtils.isEmpty(editTextUsername.getText().toString())){
                     String message = "All inputs are needed";
                     Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_LONG).show();
+                    spinner.setVisibility(View.GONE);
                 }else if (! editTextPassword.getText().toString().equals(editTextPasswordC.getText().toString())){
                     String message = "Passwords are not the same";
                     Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_LONG).show();
+                    spinner.setVisibility(View.GONE);
                 }
                 else {
                 RegisterRequest registerRequest = new RegisterRequest();
@@ -75,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
                  } else {
                     String message = "An error occurred";
                      Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_LONG).show();
+                     spinner.setVisibility(View.GONE);
                 }
             }
 
@@ -82,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 String message = t.getLocalizedMessage();
                 Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_LONG).show();
+                spinner.setVisibility(View.GONE);
             }
         });
     }

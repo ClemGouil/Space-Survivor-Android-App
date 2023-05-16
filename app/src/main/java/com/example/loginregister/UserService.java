@@ -14,7 +14,7 @@ public interface UserService {
     @GET("users/{mail}&{password}")
     Call<LoginResponse> loginUsers(@Path("mail") String mail, @Path("password") String password);
 
-    @POST("users/")
+    @POST("users/register")
     Call<RegisterResponse> registerUsers(@Body RegisterRequest registerRequest);
 
 }
