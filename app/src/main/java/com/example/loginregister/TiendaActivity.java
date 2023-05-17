@@ -43,6 +43,21 @@ public class TiendaActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<Object> objectList = response.body();
                     recycleadapter adapter = new recycleadapter(objectList);
+                    adapter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(), objectList.get(recycle.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(TiendaActivity.this, DetailTiendaActivity.class);
+                            intent.putExtra("Name", objectList.get(recycle.getChildAdapterPosition(view)).getNombre());
+                            intent.putExtra("Description", objectList.get(recycle.getChildAdapterPosition(view)).getDescripcion());
+                            intent.putExtra("Damage", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getDamage()));
+                            intent.putExtra("Health", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getHealth()));
+                            intent.putExtra("Image", objectList.get(recycle.getChildAdapterPosition(view)).getImage());
+                            intent.putExtra("Nobjects", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getNobjetos()));
+                            intent.putExtra("Price", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getPrecio()));
+                            startActivity(intent);
+                        }
+                    });
                     recycle.setAdapter(adapter);
                 }
             }
@@ -56,8 +71,9 @@ public class TiendaActivity extends AppCompatActivity {
     }
 
 
-    class recycleadapter extends RecyclerView.Adapter<recycleadapter.MyViewHolder>{
+    class recycleadapter extends RecyclerView.Adapter<recycleadapter.MyViewHolder> implements View.OnClickListener{
         List<Object> list;
+        private View.OnClickListener listener;
         public recycleadapter(List<Object> list){
             this.list = list;
         }
@@ -67,6 +83,7 @@ public class TiendaActivity extends AppCompatActivity {
         public recycleadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout,null);
             recycleadapter.MyViewHolder viewHolder = new recycleadapter.MyViewHolder(view);
+            view.setOnClickListener(this);
             return viewHolder;
         }
 
@@ -92,6 +109,18 @@ public class TiendaActivity extends AppCompatActivity {
         public int getItemCount() {
             return list.size();
         }
+
+        public void setOnClickListener(View.OnClickListener listener){
+            this.listener=listener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (listener!=null){
+            listener.onClick(view);
+        }
+        }
+
         class MyViewHolder extends RecyclerView.ViewHolder{
             TextView nombre,descripcion,nobjectos, precio,damage,health;
             ImageView image;
