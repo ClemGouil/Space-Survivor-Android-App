@@ -18,7 +18,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Write whatever to want to do after delay specified (1 sec)
+                // Write whatever to want to do after delay specified (3 sec)
                 startActivity(new Intent(SplashScreenActivity.this,LoginActivity.class));
                 finish();;
             }

@@ -17,4 +17,7 @@ public interface UserService {
     @POST("users/register")
     Call<RegisterResponse> registerUsers(@Body RegisterRequest registerRequest);
 
+    @GET("users/objetos")
+    Call<List<Object>> getObjects();
+
 }
