@@ -2,7 +2,9 @@ package com.example.loginregister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     Button button_login, button_register;
     ProgressBar spinner;
 
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,9 @@ public class LoginActivity extends AppCompatActivity {
         button_login = findViewById(R.id.btn_login);
         button_register = findViewById(R.id.btn_register);
         spinner=(ProgressBar)findViewById(R.id.progressBar);
+
         spinner.setVisibility(View.GONE);
+        sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
 
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     String message = "Successful";
                     Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("mail",mail);
+                    editor.putString("password",password);
+                    editor.putString("username", response.body().getUsername());
+                    editor.commit();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     finish();;
                 } else {

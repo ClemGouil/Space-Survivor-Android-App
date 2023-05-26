@@ -97,7 +97,6 @@ public class TiendaActivity extends AppCompatActivity {
             holder.precio.setText("Price : " + String.valueOf(list.get(position).getPrecio()));
 
 
-
             Picasso.with(getApplicationContext())
                     .load(list.get(position).getImage())
                     .placeholder(R.drawable.ic_launcher_background)

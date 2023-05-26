@@ -23,6 +23,7 @@ public class DetailTiendaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_tienda);
+
         name = findViewById(R.id.Name);
         description = findViewById(R.id.Description);
         nobjects = findViewById(R.id.Nobjects);
@@ -47,9 +48,12 @@ public class DetailTiendaActivity extends AppCompatActivity {
         damage.setText("Damage : " + damagereceived);
         health.setText("Health : " + healthreceived);
 
-        Picasso.with(getApplicationContext())
-                .load(imagereceived)
-                .into(image);
+        if (!imagereceived.equals("")){
+            Picasso.with(getApplicationContext())
+                    .load(imagereceived)
+                    .into(image);
+        }
+
 
         btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override

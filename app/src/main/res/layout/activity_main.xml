@@ -8,6 +8,20 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/btn_profil"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/account_picture"></ImageButton>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        ></TextView>
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
