@@ -71,10 +71,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registerUser(RegisterRequest registerRequest){
-        Call<RegisterResponse> registerResponseCall = ApiClient.getService().registerUsers(registerRequest);
-        registerResponseCall.enqueue(new Callback<RegisterResponse>() {
+        Call<UserResponse> registerResponseCall = ApiClient.getService().registerUsers(registerRequest);
+        registerResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                  if (response.isSuccessful()){
                      String message = "Successful";
                      Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_LONG).show();
@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 String message = t.getLocalizedMessage();
                 Toast.makeText(RegisterActivity.this,message,Toast.LENGTH_LONG).show();
                 spinner.setVisibility(View.GONE);

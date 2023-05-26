@@ -10,14 +10,16 @@
 
     <ImageButton
         android:id="@+id/btn_profil"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:background="@drawable/account_picture"></ImageButton>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profil's Informations"
+        android:textSize="30dp"
+        android:layout_marginBottom="15dp"
         ></TextView>
 
     <TextView
@@ -25,6 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         ></TextView>
 
     <TextView
@@ -32,6 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         ></TextView>
 
     <TextView
@@ -39,6 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         ></TextView>
 
     <LinearLayout
@@ -49,7 +57,8 @@
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:text="Changes"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            />
 
         <Button
             android:id="@+id/btn_LogOut"

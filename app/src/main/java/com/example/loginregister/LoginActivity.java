@@ -2,7 +2,6 @@ package com.example.loginregister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -63,17 +62,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUsers(String mail, String password){
-        Call<LoginResponse> loginResponseCall = ApiClient.getService().loginUsers(mail, password);
-        loginResponseCall.enqueue(new Callback<LoginResponse>() {
+        Call<UserResponse> loginResponseCall = ApiClient.getService().loginUsers(mail, password);
+        loginResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()){
                     String message = "Successful";
                     Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();
                     SharedPreferences.Editor editor = sharedPreferences.edit();
+
                     editor.putString("mail",mail);
                     editor.putString("password",password);
                     editor.putString("username", response.body().getUsername());
+
                     editor.commit();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     finish();;
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 String message = t.getLocalizedMessage();
                 Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();
                 spinner.setVisibility(View.GONE);

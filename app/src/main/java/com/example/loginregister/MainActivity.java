@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button_Shop;
+    ImageButton button_Shop;
     ImageButton button_profil;
     TextView username;
     SharedPreferences sharedPreferences;

@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".TiendaActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/textmoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        ></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle"
-        tools:ignore="MissingConstraints">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textmoney"
+        tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

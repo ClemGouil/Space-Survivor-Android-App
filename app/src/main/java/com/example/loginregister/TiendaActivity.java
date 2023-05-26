@@ -24,14 +24,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TiendaActivity extends AppCompatActivity {
-
     RecyclerView recycle;
+
+    TextView money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
         recycle = findViewById(R.id.recycle);
+        money = findViewById(R.id.textmoney);
+
+
 
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recycle.setLayoutManager(llm);

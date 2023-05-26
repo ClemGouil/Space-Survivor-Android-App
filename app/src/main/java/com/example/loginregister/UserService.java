@@ -12,12 +12,15 @@ import retrofit2.http.Path;
 public interface UserService {
 
     @GET("users/{mail}&{password}")
-    Call<LoginResponse> loginUsers(@Path("mail") String mail, @Path("password") String password);
+    Call<UserResponse> loginUsers(@Path("mail") String mail, @Path("password") String password);
 
     @POST("users/register")
-    Call<RegisterResponse> registerUsers(@Body RegisterRequest registerRequest);
+    Call<UserResponse> registerUsers(@Body RegisterRequest registerRequest);
 
     @GET("users/objetos")
     Call<List<Object>> getObjects();
+
+    @PUT("users")
+    Call<UserResponse> updateUser(@Body RegisterRequest registerRequest);
 
 }
