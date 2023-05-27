@@ -2,23 +2,23 @@ package com.example.loginregister;
 
 public class Object {
     String id;
-    String nombre;
-    int precio;
+    String name;
+    int price;
     int damage;
     int health;
-    int nobjetos;
-    String descripcion;
+    String type;
+    String description;
     String image;
 
-    public Object(String id, String nombre, String descripcion, int precio, int damage, int health, String image, int nobjetos) {
+    public Object(String id, String name, String description, int price, int damage, int health, String image, String type) {
         this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
+        this.name = name;
+        this.description = description;
+        this.price = price;
         this.damage = damage;
         this.health = health;
         this.image = image;
-        this.nobjetos = nobjetos;
+        this.type = type;
     }
 
     public String getId() {
@@ -29,28 +29,28 @@ public class Object {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public int getPrice() {
+        return price;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public int getPrecio() {
-        return precio;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getDamage() {
@@ -69,12 +69,12 @@ public class Object {
         this.health = health;
     }
 
-    public int getNobjetos() {
-        return nobjetos;
+    public String getType() {
+        return type;
     }
 
-    public void setNobjetos(int nobjetos) {
-        this.nobjetos = nobjetos;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getImage() {

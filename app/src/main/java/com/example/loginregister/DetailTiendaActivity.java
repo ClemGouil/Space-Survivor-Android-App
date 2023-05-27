@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 
 public class DetailTiendaActivity extends AppCompatActivity {
 
-    TextView name,description, nobjects, price,damage,health;
+    TextView name,description, type, price, damage, health;
 
     ImageView image;
 
@@ -26,7 +26,7 @@ public class DetailTiendaActivity extends AppCompatActivity {
 
         name = findViewById(R.id.Name);
         description = findViewById(R.id.Description);
-        nobjects = findViewById(R.id.Nobjects);
+        type = findViewById(R.id.type);
         price = findViewById(R.id.Price);
         damage = findViewById(R.id.Damage);
         health = findViewById(R.id.Health);
@@ -38,12 +38,12 @@ public class DetailTiendaActivity extends AppCompatActivity {
         String damagereceived = getIntent().getExtras().getString("Damage");
         String healthreceived = getIntent().getExtras().getString("Health");
         String imagereceived = getIntent().getExtras().getString("Image");
-        String nobjectsreceived = getIntent().getExtras().getString("Nobjects");
+        String typereceived = getIntent().getExtras().getString("Type");
         String pricereceived = getIntent().getExtras().getString("Price");
 
         name.setText("Name : " + namereceived);
         description.setText("Description : " + descriptionreceived);
-        nobjects.setText("Number of Objects : " + nobjectsreceived);
+        type.setText("Type : " + typereceived);
         price.setText("Price : " + pricereceived);
         damage.setText("Damage : " + damagereceived);
         health.setText("Health : " + healthreceived);

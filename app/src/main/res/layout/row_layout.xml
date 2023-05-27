@@ -58,7 +58,7 @@
                     android:textSize="15dp"></TextView>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:id="@+id/nobjects"
+                    android:id="@+id/type"
                     android:layout_weight="1"
                     android:textSize="15dp"
                     android:text=""

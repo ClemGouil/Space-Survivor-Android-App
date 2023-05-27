@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
 
         sharedPreferences = getSharedPreferences("user_info",MODE_PRIVATE);
-        String usernameS = sharedPreferences.getString("username",null);
-        username.setText(usernameS);
+        username.setText(sharedPreferences.getString("username",null));
 
         button_Shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,TiendaActivity.class));
+                finish();
             }
         });
 
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,EditProfileActivity.class));
+                finish();
             }
         });
 

@@ -42,6 +42,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 editor.clear();
                 editor.commit();
                 startActivity(new Intent(EditProfileActivity.this,SplashScreenActivity.class));
+                finish();
             }
         });
 
@@ -49,6 +50,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(EditProfileActivity.this,ChangesProfilActivity.class));
+                finish();
             }
         });
 

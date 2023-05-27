@@ -74,8 +74,8 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("mail",mail);
                     editor.putString("password",password);
                     editor.putString("username", response.body().getUsername());
-
                     editor.commit();
+
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     finish();;
                 } else {

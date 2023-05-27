@@ -85,6 +85,8 @@ public class ChangesProfilActivity extends AppCompatActivity {
 
                     editor.putString("password",response.body().getPassword());
                     editor.putString("username", response.body().getUsername());
+                    editor.putString("mail",response.body().getEmail());
+                    editor.commit();
 
                     startActivity(new Intent(ChangesProfilActivity.this,EditProfileActivity.class));
                     finish();;

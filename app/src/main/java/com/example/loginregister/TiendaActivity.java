@@ -25,7 +25,6 @@ import retrofit2.Response;
 
 public class TiendaActivity extends AppCompatActivity {
     RecyclerView recycle;
-
     TextView money;
 
     @Override
@@ -50,15 +49,15 @@ public class TiendaActivity extends AppCompatActivity {
                     adapter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(), objectList.get(recycle.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), objectList.get(recycle.getChildAdapterPosition(view)).getName(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(TiendaActivity.this, DetailTiendaActivity.class);
-                            intent.putExtra("Name", objectList.get(recycle.getChildAdapterPosition(view)).getNombre());
-                            intent.putExtra("Description", objectList.get(recycle.getChildAdapterPosition(view)).getDescripcion());
+                            intent.putExtra("Name", objectList.get(recycle.getChildAdapterPosition(view)).getName());
+                            intent.putExtra("Description", objectList.get(recycle.getChildAdapterPosition(view)).getDescription());
                             intent.putExtra("Damage", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getDamage()));
                             intent.putExtra("Health", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getHealth()));
                             intent.putExtra("Image", objectList.get(recycle.getChildAdapterPosition(view)).getImage());
-                            intent.putExtra("Nobjects", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getNobjetos()));
-                            intent.putExtra("Price", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getPrecio()));
+                            intent.putExtra("Type", objectList.get(recycle.getChildAdapterPosition(view)).getType());
+                            intent.putExtra("Price", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getPrice()));
                             startActivity(intent);
                         }
                     });
@@ -93,19 +92,20 @@ public class TiendaActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull recycleadapter.MyViewHolder holder, int position) {
-            holder.nombre.setText("Name : " + list.get(position).getNombre());
-            holder.descripcion.setText("Description : " + list.get(position).getDescripcion());
+            holder.nombre.setText("Name : " + list.get(position).getName());
+            holder.descripcion.setText("Description : " + list.get(position).getDescription());
             holder.health.setText("Health : " + String.valueOf(list.get(position).getHealth()));
-            holder.damage.setText("Damage : " +String.valueOf(list.get(position).getDamage()));
-            holder.nobjectos.setText("Number of Object : " + String.valueOf(list.get(position).getNobjetos()));
-            holder.precio.setText("Price : " + String.valueOf(list.get(position).getPrecio()));
+            holder.damage.setText("Damage : " + String.valueOf(list.get(position).getDamage()));
+            holder.type.setText("Type : " + list.get(position).getType());
+            holder.precio.setText("Price : " + String.valueOf(list.get(position).getPrice()));
 
-
-            Picasso.with(getApplicationContext())
-                    .load(list.get(position).getImage())
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .fit()
-                    .into(holder.image);
+            if (!list.get(position).getImage().equals("")) {
+                Picasso.with(getApplicationContext())
+                        .load(list.get(position).getImage())
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .fit()
+                        .into(holder.image);
+            }
         }
 
         @Override
@@ -125,14 +125,14 @@ public class TiendaActivity extends AppCompatActivity {
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder{
-            TextView nombre,descripcion,nobjectos, precio,damage,health;
+            TextView nombre,descripcion,type, precio,damage,health;
             ImageView image;
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
                 nombre = itemView.findViewById(R.id.name);
                 descripcion = itemView.findViewById(R.id.description);
-                nobjectos = itemView.findViewById(R.id.nobjects);
+                type = itemView.findViewById(R.id.type);
                 precio = itemView.findViewById(R.id.price);
                 damage = itemView.findViewById(R.id.damage);
                 health = itemView.findViewById(R.id.health);
