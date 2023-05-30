@@ -56,11 +56,13 @@ public class ChangesProfilActivity extends AppCompatActivity {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegisterRequest registerRequest = new RegisterRequest();
-                registerRequest.setEmail(mail);
-                registerRequest.setPassword(editTextPassword.getText().toString());
-                registerRequest.setUsername(editTextUsername.getText().toString());
-                updateUser(registerRequest);}
+                UserRequest userRequest = new UserRequest();
+                userRequest.setMail(sharedPreferences.getString("mail",null));
+                userRequest.setPassword(editTextPassword.getText().toString());
+                userRequest.setUsername(editTextUsername.getText().toString());
+                userRequest.setLifePoint(sharedPreferences.getInt("lifePoint",0));
+                userRequest.setCoins(sharedPreferences.getInt("coins",0));
+                updateUser(userRequest);}
         });
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +75,8 @@ public class ChangesProfilActivity extends AppCompatActivity {
 
     }
 
-    public void updateUser(RegisterRequest registerRequest){
-        Call<UserResponse> updateResponseCall = ApiClient.getService().updateUser(registerRequest);
+    public void updateUser(UserRequest userRequest){
+        Call<UserResponse> updateResponseCall = ApiClient.getService().updateUser(userRequest);
         updateResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
@@ -83,12 +85,13 @@ public class ChangesProfilActivity extends AppCompatActivity {
                     Toast.makeText(ChangesProfilActivity.this,message,Toast.LENGTH_LONG).show();
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                    editor.putString("mail",response.body().getMail());
                     editor.putString("password",response.body().getPassword());
                     editor.putString("username", response.body().getUsername());
-                    editor.putString("mail",response.body().getEmail());
+
                     editor.commit();
 
-                    startActivity(new Intent(ChangesProfilActivity.this,EditProfileActivity.class));
+                    startActivity(new Intent(ChangesProfilActivity.this, ProfileActivity.class));
                     finish();;
                 } else {
                     String message = "An error occurred";
@@ -125,8 +128,6 @@ public class ChangesProfilActivity extends AppCompatActivity {
             }
         }
 
-
     }
-
 
 }

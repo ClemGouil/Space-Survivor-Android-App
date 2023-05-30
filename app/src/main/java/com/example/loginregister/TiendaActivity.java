@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import retrofit2.Response;
 public class TiendaActivity extends AppCompatActivity {
     RecyclerView recycle;
     TextView money;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,8 @@ public class TiendaActivity extends AppCompatActivity {
         recycle = findViewById(R.id.recycle);
         money = findViewById(R.id.textmoney);
 
-
+        sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
+        money.setText("Coins :" + sharedPreferences.getInt("coins",0));
 
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recycle.setLayoutManager(llm);
@@ -53,12 +56,13 @@ public class TiendaActivity extends AppCompatActivity {
                             Intent intent = new Intent(TiendaActivity.this, DetailTiendaActivity.class);
                             intent.putExtra("Name", objectList.get(recycle.getChildAdapterPosition(view)).getName());
                             intent.putExtra("Description", objectList.get(recycle.getChildAdapterPosition(view)).getDescription());
-                            intent.putExtra("Damage", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getDamage()));
-                            intent.putExtra("Health", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getHealth()));
+                            intent.putExtra("Damage", objectList.get(recycle.getChildAdapterPosition(view)).getDamage());
+                            intent.putExtra("Health", objectList.get(recycle.getChildAdapterPosition(view)).getHealth());
                             intent.putExtra("Image", objectList.get(recycle.getChildAdapterPosition(view)).getImage());
                             intent.putExtra("Type", objectList.get(recycle.getChildAdapterPosition(view)).getType());
-                            intent.putExtra("Price", String.valueOf(objectList.get(recycle.getChildAdapterPosition(view)).getPrice()));
+                            intent.putExtra("Price", objectList.get(recycle.getChildAdapterPosition(view)).getPrice());
                             startActivity(intent);
+                            finish();
                         }
                     });
                     recycle.setAdapter(adapter);
@@ -140,5 +144,6 @@ public class TiendaActivity extends AppCompatActivity {
             }
         }
     }
+
 
 }

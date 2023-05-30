@@ -1,7 +1,6 @@
 package com.example.loginregister;
 
 public class Object {
-    String id;
     String name;
     int price;
     int damage;
@@ -10,8 +9,7 @@ public class Object {
     String description;
     String image;
 
-    public Object(String id, String name, String description, int price, int damage, int health, String image, String type) {
-        this.id = id;
+    public Object(String name, String description, int price, int damage, int health, String image, String type) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -19,14 +17,6 @@ public class Object {
         this.health = health;
         this.image = image;
         this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

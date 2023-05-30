@@ -60,9 +60,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else {
                 RegisterRequest registerRequest = new RegisterRequest();
-                registerRequest.setEmail(editTextEmail.getText().toString());
+                registerRequest.setMail(editTextEmail.getText().toString());
                 registerRequest.setPassword(editTextPassword.getText().toString());
                 registerRequest.setUsername(editTextUsername.getText().toString());
+                registerRequest.setCoins(100);
+                registerRequest.setLifePoint(100);
                 registerUser(registerRequest);}
             }
         });

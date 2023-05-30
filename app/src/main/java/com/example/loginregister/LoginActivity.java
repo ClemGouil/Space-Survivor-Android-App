@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword;
     Button button_login, button_register;
     ProgressBar spinner;
-
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +73,8 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("mail",mail);
                     editor.putString("password",password);
                     editor.putString("username", response.body().getUsername());
+                    editor.putInt("lifePoint",response.body().getLifePoint());
+                    editor.putInt("coins",response.body().getCoins());
                     editor.commit();
 
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));

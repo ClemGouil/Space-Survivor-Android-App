@@ -1,22 +1,12 @@
 package com.example.loginregister;
 
-public class RegisterRequest {
-
-    private String username;
+public class UserRequest {
+    private String id;
     private String mail;
+    private String username;
     private String password;
-
     private int lifePoint;
-
     private int coins;
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
 
     public int getLifePoint() {
         return lifePoint;
@@ -34,6 +24,14 @@ public class RegisterRequest {
         this.coins = coins;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -42,6 +40,13 @@ public class RegisterRequest {
         this.username = username;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String email) {
+        this.mail = email;
+    }
 
     public String getPassword() {
         return password;

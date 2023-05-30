@@ -21,7 +21,7 @@
             android:name=".ChangesProfilActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".DetailTiendaActivity"
