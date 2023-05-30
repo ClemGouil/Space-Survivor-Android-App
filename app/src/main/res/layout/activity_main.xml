@@ -47,7 +47,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp">
+        android:padding="20dp">
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -87,9 +87,9 @@
             android:layout_height="130dp"
             android:background="@drawable/ic_score"
             android:foreground="@drawable/black"
+            android:layout_marginBottom="30dp"
             android:layout_marginRight="30dp"
             android:contentDescription="TODO" />
-
         <ImageButton
             android:id="@+id/btn_forum"
             android:gravity="center_horizontal"
@@ -102,7 +102,20 @@
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <ImageButton
+            android:id="@+id/btn_inventory"
+            android:gravity="center_horizontal"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/ic_inventory"
+            android:foreground="@drawable/black"
+            android:contentDescription="TODO" />
+
+    </LinearLayout>
 
 </LinearLayout>
 

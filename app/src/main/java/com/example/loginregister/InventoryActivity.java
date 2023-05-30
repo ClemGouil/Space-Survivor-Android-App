@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,38 +24,36 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TiendaActivity extends AppCompatActivity {
+public class InventoryActivity extends AppCompatActivity {
+
     RecyclerView recycle;
-    TextView money;
+
     SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tienda);
+        setContentView(R.layout.activity_inventory);
         recycle = findViewById(R.id.recycle);
-        money = findViewById(R.id.textmoney);
 
         sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
-        money.setText("Coins :" + sharedPreferences.getInt("coins",0));
 
-        //int numberOfColumns = 2; // Nombre de colonnes dans la grille
-        //GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), numberOfColumns);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recycle.setLayoutManager(layoutManager);
 
-        Call<List<Object>> objectlistcall = ApiClient.getService().getObjects();
+        Call<List<Object>> objectlistcall = ApiClient.getService().getInventory(sharedPreferences.getString("mail",null),sharedPreferences.getString("password",null));
+
         objectlistcall.enqueue(new Callback<List<Object>>() {
             @Override
             public void onResponse(Call<List<Object>> call, Response<List<Object>> response) {
                 if (response.isSuccessful()) {
                     List<Object> objectList = response.body();
-                    recycleadapter adapter = new recycleadapter(objectList);
+                    InventoryActivity.recycleadapter adapter = new InventoryActivity.recycleadapter(objectList);
                     adapter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(getApplicationContext(), objectList.get(recycle.getChildAdapterPosition(view)).getName(), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(TiendaActivity.this, DetailTiendaActivity.class);
+                            Intent intent = new Intent(InventoryActivity.this, DetailInventoryActivity.class);
                             intent.putExtra("Name", objectList.get(recycle.getChildAdapterPosition(view)).getName());
                             intent.putExtra("Description", objectList.get(recycle.getChildAdapterPosition(view)).getDescription());
                             intent.putExtra("Damage", objectList.get(recycle.getChildAdapterPosition(view)).getDamage());
@@ -69,9 +66,9 @@ public class TiendaActivity extends AppCompatActivity {
                         }
                     });
                     recycle.setAdapter(adapter);
+
                 }
             }
-
             @Override
             public void onFailure(Call<List<Object>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_SHORT).show();
@@ -80,8 +77,7 @@ public class TiendaActivity extends AppCompatActivity {
 
     }
 
-
-    class recycleadapter extends RecyclerView.Adapter<recycleadapter.MyViewHolder> implements View.OnClickListener{
+    class recycleadapter extends RecyclerView.Adapter<InventoryActivity.recycleadapter.MyViewHolder> implements View.OnClickListener{
         List<Object> list;
         private View.OnClickListener listener;
         public recycleadapter(List<Object> list){
@@ -90,15 +86,15 @@ public class TiendaActivity extends AppCompatActivity {
 
         @NonNull
         @Override
-        public recycleadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public InventoryActivity.recycleadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout,null);
-            recycleadapter.MyViewHolder viewHolder = new recycleadapter.MyViewHolder(view);
+            InventoryActivity.recycleadapter.MyViewHolder viewHolder = new InventoryActivity.recycleadapter.MyViewHolder(view);
             view.setOnClickListener(this);
             return viewHolder;
         }
 
         @Override
-        public void onBindViewHolder(@NonNull recycleadapter.MyViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull InventoryActivity.recycleadapter.MyViewHolder holder, int position) {
             holder.nombre.setText("Name : " + list.get(position).getName());
             holder.descripcion.setText("Description : " + list.get(position).getDescription());
             holder.health.setText("Health : " + String.valueOf(list.get(position).getHealth()));
@@ -127,8 +123,8 @@ public class TiendaActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (listener!=null){
-            listener.onClick(view);
-        }
+                listener.onClick(view);
+            }
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder{
@@ -147,6 +143,4 @@ public class TiendaActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }

@@ -29,4 +29,10 @@ public interface UserService {
 
     @PUT("users/shop/buy/{mail}&{password}")
     Call<Object> buyObjet(@Body Object object,@Path("mail") String mail, @Path("password") String password);
+
+    @PUT("users/shop/sell/{mail}&{password}")
+    Call<Object> sellObjet(@Body Object object,@Path("mail") String mail, @Path("password") String password);
+
+    @GET("users/inventory/{mail}&{password}")
+    Call<List<Object>> getInventory(@Path("mail") String mail, @Path("password") String password);
 }

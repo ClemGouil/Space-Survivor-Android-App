@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text=""
-        android:textSize="30sp">
+        android:textSize="20sp">
     </TextView>
     <TextView
         android:id="@+id/Damage"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text=""
-        android:textSize="30sp">
+        android:textSize="20sp">
     </TextView>
     <TextView
         android:id="@+id/Health"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text=""
-        android:textSize="30sp">
+        android:textSize="20sp">
     </TextView>
     <TextView
         android:id="@+id/type"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text=""
-        android:textSize="30sp">
+        android:textSize="20sp">
     </TextView>
     <TextView
         android:id="@+id/Price"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text=""
-        android:textSize="30sp">
+        android:textSize="20sp">
     </TextView>
     <Button
         android:id="@+id/btn_buy"

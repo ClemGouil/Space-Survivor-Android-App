@@ -18,6 +18,12 @@
         android:theme="@style/Theme.LoginRegister"
         tools:targetApi="31">
         <activity
+            android:name=".DetailInventoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InventoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChangesProfilActivity"
             android:exported="false" />
         <activity

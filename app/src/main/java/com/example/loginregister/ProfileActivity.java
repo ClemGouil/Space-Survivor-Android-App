@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -74,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
         builder.setMessage("Are you sure you want to unsubscribe ? All your data will be lost")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        unsubscribe(sharedPreferences.getString("username",null),sharedPreferences.getString("password",null));
+                        unsubscribe(sharedPreferences.getString("mail",null),sharedPreferences.getString("password",null));
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -90,12 +91,21 @@ public class ProfileActivity extends AppCompatActivity {
         deleteResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-
+                if (response.isSuccessful()) {
+                    String message = "Successful";
+                    Toast.makeText(ProfileActivity.this, message, Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+                    finish();
+                } else {
+                    String message = "An error occurred";
+                    Toast.makeText(ProfileActivity.this, message, Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-
+                    String message = t.getLocalizedMessage();
+                    Toast.makeText(ProfileActivity.this,message,Toast.LENGTH_LONG).show();
             }
         });
     }

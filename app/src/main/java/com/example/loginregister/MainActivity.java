@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton button_Shop;
-    ImageButton button_profil;
+    ImageButton button_Shop, button_profil, button_inventory;
     TextView username;
     SharedPreferences sharedPreferences;
 
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button_Shop = findViewById(R.id.btn_shop);
         button_profil = findViewById(R.id.btn_profil);
+        button_inventory = findViewById(R.id.btn_inventory);
         username = findViewById(R.id.username);
 
         sharedPreferences = getSharedPreferences("user_info",MODE_PRIVATE);
@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            }
+        });
+
+        button_inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, InventoryActivity.class));
             }
         });
     }
