@@ -10,5 +10,8 @@
     <string name="Welcome">Welcome</string>
     <string name="name">name</string>
     <string name="surname">surname</string>
+    <string name="date">date</string>
+    <string name="title">title</string>
+    <string name="message">message</string>
 
 </resources>

@@ -18,6 +18,9 @@ public interface UserService {
     @POST("users/register")
     Call<UserResponse> registerUsers(@Body RegisterRequest registerRequest);
 
+    @POST("users/question")
+    Call<Question> sendQuestion(@Body Question question);
+
     @DELETE("users/delete/{mail}&{password}")
     Call<UserResponse> deleteUsers(@Path("mail") String mail, @Path("password") String password);
 
