@@ -38,4 +38,7 @@ public interface UserService {
 
     @GET("users/inventory/{mail}&{password}")
     Call<List<Object>> getInventory(@Path("mail") String mail, @Path("password") String password);
+
+    @GET("users/posts")
+    Call<List<Message>> getMessage();
 }
