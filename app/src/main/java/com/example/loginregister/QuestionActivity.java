@@ -41,22 +41,23 @@ public class QuestionActivity extends AppCompatActivity {
         button_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Question question = new Question();
+                QuestionRequest question = new QuestionRequest();
                 question.setSender(mail);
                 question.setDate(editTextDate.getText().toString());
                 question.setTitle(editTextTitle.getText().toString());
                 question.setMessage(editTextMessage.getText().toString());
+                question.setResponse("");
 
                 sendQuestion(question);}
         });
 
     }
 
-    public void sendQuestion(Question question){
-        Call<Question> questionResponseCall = ApiClient.getService().sendQuestion(question);
-        questionResponseCall.enqueue(new Callback<Question>() {
+    public void sendQuestion(QuestionRequest question){
+        Call<QuestionRequest> questionResponseCall = ApiClient.getService().sendQuestion(question);
+        questionResponseCall.enqueue(new Callback<QuestionRequest>() {
             @Override
-            public void onResponse(Call<Question> call, Response<Question> response) {
+            public void onResponse(Call<QuestionRequest> call, Response<QuestionRequest> response) {
                 if (response.isSuccessful()){
                     String message = "Successful";
                     Toast.makeText(QuestionActivity.this,message,Toast.LENGTH_LONG).show();
@@ -70,7 +71,7 @@ public class QuestionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Question> call, Throwable t) {
+            public void onFailure(Call<QuestionRequest> call, Throwable t) {
                 String message = t.getLocalizedMessage();
                 Toast.makeText(QuestionActivity.this,message,Toast.LENGTH_LONG).show();
             }

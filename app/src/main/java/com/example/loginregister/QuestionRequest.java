@@ -1,14 +1,20 @@
 package com.example.loginregister;
 
-public class Question {
+public class QuestionRequest {
 
+    private String sender;
     private String date;
     private String title;
     private String message;
-    private String sender;
+    private String response;
 
+    public String getSender() {
+        return sender;
+    }
 
-    public Question() {}
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
 
     public String getDate() {
         return date;
@@ -34,11 +40,11 @@ public class Question {
         this.message = message;
     }
 
-    public String getSender() {
-        return sender;
+    public String getResponse() {
+        return response;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setResponse(String response) {
+        this.response = response;
     }
 }

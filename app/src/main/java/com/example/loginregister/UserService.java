@@ -19,7 +19,7 @@ public interface UserService {
     Call<UserResponse> registerUsers(@Body RegisterRequest registerRequest);
 
     @POST("users/question")
-    Call<Question> sendQuestion(@Body Question question);
+    Call<QuestionRequest> sendQuestion(@Body QuestionRequest question);
 
     @DELETE("users/delete/{mail}&{password}")
     Call<UserResponse> deleteUsers(@Path("mail") String mail, @Path("password") String password);
@@ -41,4 +41,7 @@ public interface UserService {
 
     @GET("users/posts")
     Call<List<Message>> getMessage();
+
+    @GET("users/questions/{mail}&{password}")
+    Call<List<QuestionRequest>> getQuestion(@Path("mail") String mail, @Path("password") String password);
 }
