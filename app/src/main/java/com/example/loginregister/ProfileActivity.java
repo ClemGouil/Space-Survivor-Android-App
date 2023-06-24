@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         editUsername.setText("Username : " + sharedPreferences.getString("username",null));
         editMail.setText("Mail : " + sharedPreferences.getString("mail",null));
-        editPassword.setText("Password : " + sharedPreferences.getString("password",null));
+        editPassword.setText(sharedPreferences.getString("password",null));
 
         button_logout.setOnClickListener(new View.OnClickListener() {
             @Override

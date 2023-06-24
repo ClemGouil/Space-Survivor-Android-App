@@ -25,7 +25,7 @@ public class DetailQuestionActivity extends AppCompatActivity {
 
         title.setText("Title : " + titlereceived);
         date.setText("Date : " + datereceived);
-        question.setText(messagereceived);
-        response.setText(responsereceived);
+        question.setText("Question : " + messagereceived);
+        response.setText("Answer : " + responsereceived);
     }
 }

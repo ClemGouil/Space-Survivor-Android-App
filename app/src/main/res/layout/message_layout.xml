@@ -9,6 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="caca"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         tools:ignore="MissingConstraints">
     </TextView>
 

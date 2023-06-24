@@ -40,15 +40,28 @@
         android:layout_marginBottom="10dp"
         ></TextView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/passwordtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Password : ">
+    </TextView>
     <TextView
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:inputType="textPassword"
         android:textSize="20dp"
         android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toEndOf="@id/passwordtext"
         ></TextView>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

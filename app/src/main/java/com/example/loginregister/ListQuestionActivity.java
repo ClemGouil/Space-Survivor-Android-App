@@ -90,6 +90,7 @@ public class ListQuestionActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ListQuestionActivity.recycleadapter.MyViewHolder holder, int position) {
             holder.title.setText("Title : " + list.get(position).getTitle());
+            holder.date.setText("Date : " + list.get(position).getDate());
         }
 
         @Override
@@ -109,11 +110,12 @@ public class ListQuestionActivity extends AppCompatActivity {
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder{
-            TextView title;
+            TextView title, date;
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
                 title = itemView.findViewById(R.id.title);
+                date = itemView.findViewById(R.id.date);
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ public class MessageInboxActivity extends AppCompatActivity {
 
     RecyclerView recycle;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,9 @@ public class MessageInboxActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recycle.setLayoutManager(layoutManager);
 
-        Call<List<Message>> messagelistcall = ApiClient.getService().getMessage();
+        sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
+
+        Call<List<Message>> messagelistcall = ApiClient.getService().getMessage(sharedPreferences.getString("mail",null),sharedPreferences.getString("password",null));
 
         messagelistcall.enqueue(new Callback<List<Message>>() {
             @Override
@@ -70,7 +75,7 @@ public class MessageInboxActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull MessageInboxActivity.recycleadapter.MyViewHolder holder, int position) {
-            holder.message.setText("Message : " + list.get(position).getMessage());
+            holder.message.setText(list.get(position).getMessage());
 
         }
 

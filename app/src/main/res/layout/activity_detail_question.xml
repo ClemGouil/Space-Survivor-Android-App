@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".DetailQuestionActivity">
 
@@ -12,8 +11,11 @@
         android:id="@+id/Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:textSize="20dp">
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_marginBottom="5dp"
+        >
     </TextView>
 
         <TextView
@@ -21,8 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text=""
-            android:textSize="30sp">
+            android:text="Date"
+            android:textSize="20sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="50dp">
         </TextView>
 
         <TextView
@@ -31,7 +36,9 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text=""
-            android:textSize="20sp">
+            android:textSize="20sp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="5dp">
         </TextView>
         <TextView
             android:id="@+id/Response"
@@ -39,6 +46,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text=""
-            android:textSize="20sp">
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp">
         </TextView>
 </LinearLayout>
