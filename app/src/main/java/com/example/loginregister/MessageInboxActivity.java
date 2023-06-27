@@ -75,7 +75,7 @@ public class MessageInboxActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull MessageInboxActivity.recycleadapter.MyViewHolder holder, int position) {
-            holder.message.setText(list.get(position).getMessage());
+            holder.message.setText( "  "+list.get(position).getMessage());
 
         }
 

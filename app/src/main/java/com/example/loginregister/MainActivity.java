@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton button_Shop, button_profil, button_inventory, button_forum, button_play,button_messageInbox;
+    ImageButton button_Shop, button_profil, button_inventory, button_forum, button_play,button_messageInbox, button_level;
     TextView username;
     SharedPreferences sharedPreferences;
 
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         button_messageInbox = findViewById(R.id.btn_messageInbox);
         button_play = findViewById(R.id.btn_play);
+        button_level = findViewById(R.id.btn_score);
 
         sharedPreferences = getSharedPreferences("user_info",MODE_PRIVATE);
         username.setText(sharedPreferences.getString("username",null));
@@ -75,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        button_level.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LevelActivity.class));
+            }
+        });
+
 
 
     }

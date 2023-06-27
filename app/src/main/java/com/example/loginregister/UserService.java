@@ -44,4 +44,7 @@ public interface UserService {
 
     @GET("users/questions/{mail}&{password}")
     Call<List<QuestionRequest>> getQuestion(@Path("mail") String mail, @Path("password") String password);
+
+    @GET("users/levels/{mail}&{password}")
+    Call<Level> getLevel(@Path("mail") String mail, @Path("password") String password);
 }
