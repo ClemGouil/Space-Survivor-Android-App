@@ -2,16 +2,18 @@ package com.example.loginregister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton button_Shop, button_profil, button_inventory, button_forum, button_messageInbox;
+    ImageButton button_Shop, button_profil, button_inventory, button_forum, button_play,button_messageInbox;
     TextView username;
     SharedPreferences sharedPreferences;
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         button_forum = findViewById(R.id.btn_forum);
         username = findViewById(R.id.username);
         button_messageInbox = findViewById(R.id.btn_messageInbox);
+        button_play = findViewById(R.id.btn_play);
 
         sharedPreferences = getSharedPreferences("user_info",MODE_PRIVATE);
         username.setText(sharedPreferences.getString("username",null));
@@ -61,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, MessageInboxActivity.class));
+            }
+        });
+
+        button_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setComponent(new ComponentName("com.dsa.mygame", "com.unity3d.player.UnityPlayerActivity"));
+                startActivity(i);
             }
         });
 

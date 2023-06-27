@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginRegister</string>
+    <string name="app_name">SpaceSurvivor</string>
 
     <string name="login">Login</string>
     <string name="retour">Retour</string>
